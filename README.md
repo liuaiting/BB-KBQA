@@ -57,7 +57,7 @@
 
 ner/ : BERT-CRF model
 
-运行下面的命令进行训练或者测试：
+运行下面的命令进行训练或者测试：run_md.sh
 
 ```bash
 #!/usr/bin/env bash
@@ -83,7 +83,7 @@ python run_md.py \
 
 run_classifier.py: 添加NlpccxqProcessor
 
-运行下面的命令进行训练或者测试：
+运行下面的命令进行训练或者测试：run_xq.sh
 
 ```bash
 #!/usr/bin/env bash
@@ -109,7 +109,7 @@ python run_classifier.py \
 
 run_classifier.py: 添加NlpccpmProcessor, NlpccpmwmProcessor
 
-运行下面的命令进行训练或者测试：
+运行下面的命令进行训练或者测试：run_pm.sh, run_pm_with_mention.sh
 
 ```bash
 #!/usr/bin/env bash
