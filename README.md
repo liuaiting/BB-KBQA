@@ -1,20 +1,35 @@
 # BB-KBQA
 
-![](./fig/fig1.eps)
+![KBQA](./fig/fig1.eps)
+
+## File change
+
+| file                              | note                                                         |
+| --------------------------------- | ------------------------------------------------------------ |
+| ner/                              | add BERT-CRF model                                           |
+| run_classifier.py                 | add NlpccpmProcessor, NlpccpmwmProcessor and NlpccxqProcessor |
+| chinese_L-12_H-768_A-12/vocab.txt | [unused1] 替换为entity                                       |
+| data_utils.py                     | 数据预处理                                                   |
+| evaluate.py                       | 结果处理                                                     |
+|                                   |                                                              |
+|                                   |                                                              |
+|                                   |                                                              |
+
+**TODO**:  (huangziqi) 加入计算模型结果的代码等其他部分代码
+
+
 
 ## Model
 
 ### BERT-Softmax
 
-![](./fig/fig3.eps)
+![BERT-Softmax](./fig/fig3.eps)
 
 ### BERT-CRF
 
 ![BERT-CRF](./fig/fig4.eps)
 
 ## Dataset
-
-chinese_L-12_H-768_A-12/vocab.txt: [unused1] -> entity
 
 | data                            | train  | dev   | test   | infer  |
 | ------------------------------- | ------ | ----- | ------ | ------ |

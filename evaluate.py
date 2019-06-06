@@ -7,11 +7,20 @@ import pandas as pd
 xq_raw_file = "data/XQ/test9870.csv"
 xq_result_file = "xq_output/test_results_9870_mc.tsv"
 
+xq_raw_file_all = "data/XQ/infer9870.csv"
+xq_result_file_all = "xq_output/test_results_9870_all.tsv"
+
 pm_raw_file = "data/PM/test9870.csv"
 pm_result_file = "pm_output/test_results_9870_ec.tsv"
 
+pm_raw_file_all = "data/PM/infer9870.csv"
+pm_result_file_all = "pm_output/test_results_9870_all.tsv"
+
 pm_with_mention_raw_file = "data/PM/test9870_with_mention.csv"
 pm_with_mention_result_file = "pm_output_with_mention/test_results_9870_ec_with_mention.tsv"
+
+pm_with_mention_raw_file_all = "data/PM/test9870_all_with_mention.csv"
+pm_with_mention_result_file_all = "pm_output_with_mention/test_results_9870_all_with_mention.tsv"
 
 
 def func(a, b):
@@ -30,10 +39,10 @@ def myaccuracy(raw_file, result_file):
     acc = accuracy_score(y_true=test_df.label, y_pred=df.pred)
     p = precision_score(y_true=test_df.label, y_pred=df.pred)
     r = recall_score(y_true=test_df.label, y_pred=df.pred)
-    print("accuracy: ", acc)
-    print("precision: ", p)
-    print("recall: ", r)
-    print("f1: ", f1)
+    # print("accuracy: ", acc)
+    # print("precision: ", p)
+    # print("recall: ", r)
+    # print("f1: ", f1)
 
     # df['idx'] = test_df.idx.map(lambda x: x.split('-')[0])
     df["idx"] = test_df.idx
@@ -155,18 +164,20 @@ def column5_to_row(id_pred_file, raw_file, result_file):
     fw.close()
 
 
-process_infer_result("pm_output/test_results_9870_ec.tsv", "data/PM/test9870.csv", "result/id_test9870_ec.csv")
-column4_to_row("result/id_test9870_ec.csv", "data/PM/candidate_predicate_bert_9870_ec.txt", "result/pm_result_9870_ec")
-
-# process_infer_result("pm_output_with_mention/test_results_9870_ec_with_mention.tsv", "data/PM/test9870_with_mention.csv", "result/id_test9870_ec_with_mention.csv")
-# column4_to_row("result/id_test9870_ec_with_mention.csv", "data/PM/candidate_predicate_bert_9870_ec.txt", "result/pm_result_9870_ec_with_mention")
-
-# process_infer_result("pm_output/test_results_9870_all.tsv", "data/PM/infer9870_all.csv", "result/id_infer9870_all.csv")
-# column5_to_row("result/id_infer9870_all.csv", "data/PM/candidate_predicate_bert_9870_all.txt", "result/pm_result_9870_all")
-
-# process_infer_result("pm_output_with_mention/test_results_9870_all_with_mention.tsv", "data/PM/infer9870_all_with_mention.csv", "result/id_test9870_all_with_mention.csv")
-# column5_to_row("result/id_test9870_all_with_mention.csv", "data/PM/candidate_predicate_bert_9870_all.txt", "result/pm_result_9870_all_with_mention")
-
 # process_infer_result("xq_output/test_results_9870_mc.tsv", "data/XQ/test9870.csv", "result/id_test9870_mc.csv")
 # column4_to_row("result/id_test9870_mc.csv", "data/XQ/candidate_entity_test_bert_9870_mc.txt", "result/xq_result_9870_mc")
-
+#
+# process_infer_result("xq_output/test_results_9870.tsv", "data/XQ/infer9870.csv", "result/id_infer9870.csv")
+# column4_to_row("result/id_infer9870.csv", "data/XQ/candidate_entity_test_bert_9870.txt", "result/xq_result_9870")
+#
+# process_infer_result("pm_output/test_results_9870_ec.tsv", "data/PM/test9870.csv", "result/id_test9870_ec.csv")
+# column4_to_row("result/id_test9870_ec.csv", "data/PM/candidate_predicate_bert_9870_ec.txt", "result/pm_result_9870_ec")
+#
+# process_infer_result("pm_output_with_mention/test_results_9870_ec_with_mention.tsv", "data/PM/test9870_with_mention.csv", "result/id_test9870_ec_with_mention.csv")
+# column4_to_row("result/id_test9870_ec_with_mention.csv", "data/PM/candidate_predicate_bert_9870_ec.txt", "result/pm_result_9870_ec_with_mention")
+#
+# process_infer_result("pm_output/test_results_9870_all.tsv", "data/PM/infer9870_all.csv", "result/id_infer9870_all.csv")
+# column5_to_row("result/id_infer9870_all.csv", "data/PM/candidate_predicate_bert_9870_all.txt", "result/pm_result_9870_all")
+#
+# process_infer_result("pm_output_with_mention/test_results_9870_all_with_mention.tsv", "data/PM/infer9870_all_with_mention.csv", "result/id_infer9870_all_with_mention.csv")
+# column5_to_row("result/id_infer9870_all_with_mention.csv", "data/PM/candidate_predicate_bert_9870_all.txt", "result/pm_result_9870_all_with_mention")
