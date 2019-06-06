@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2739b2d8-4cc4-4229-8e9f-669acdd8522e" name="210" url="http://10.108.210.210">
+        <fileTransfer host="10.108.210.210" port="22" rootFolder="/home/lat" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="31c16948-5226-420a-8cf3-3a458576390e" name="36" url="http://10.108.211.36">
+        <fileTransfer host="10.108.211.36" port="22" rootFolder="/home/lat" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="d075c999-25b2-4844-b558-2d61acc3fc89" name="bzw" url="http://10.108.221.23">
+        <fileTransfer host="10.108.221.23" port="22" rootFolder="/data/lat" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
