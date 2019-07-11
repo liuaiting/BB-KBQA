@@ -2,7 +2,7 @@
 
 # BB-KBQA
 
-![KBQA](./fig/fig1.eps)
+![KBQA](./fig/fig1.pdf)
 
 ## File change
 
@@ -29,11 +29,11 @@
 
 ### BERT-Softmax
 
-![BERT-Softmax](./fig/fig3.eps)
+![BERT-Softmax](./fig/fig3.pdf)
 
 ### BERT-CRF
 
-![BERT-CRF](./fig/fig4.eps)
+![BERT-CRF](./fig/fig4.pdf)
 
 ## Dataset
 

@@ -4,7 +4,14 @@
     <bookmark url="file://$PROJECT_DIR$/../tired/evaluate.py" description="&#10;" line="21" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55f69125-026f-465b-9e1d-c500a468728b" name="Default Changelist" comment="" />
+    <list default="true" id="55f69125-026f-465b-9e1d-c500a468728b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/run_xqpm.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_classifier.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +22,44 @@
     <SUITE FILE_PATH="coverage/bert_master$evaluate.coverage" NAME="evaluate Coverage Results" MODIFIED="1556393040060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="454" column="68" selection-start-line="454" selection-start-column="68" selection-end-line="454" selection-end-column="68" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_classifier.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9624">
+              <caret line="825" column="70" selection-start-line="825" selection-start-column="70" selection-end-line="825" selection-end-column="70" />
+              <folding>
+                <element signature="e#646#684#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/evaluate.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="188" selection-start-line="188" selection-end-line="188" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -50,10 +94,10 @@
       <find>\t</find>
       <find>top5</find>
       <find>test</find>
-      <find>XQ</find>
       <find>PM</find>
       <find>=</find>
       <find>crf_only</find>
+      <find>XQ</find>
     </findStrings>
     <replaceStrings>
       <replace>E</replace>
@@ -64,6 +108,7 @@
       <replace>infer</replace>
       <replace>data/PM</replace>
       <replace />
+      <replace>XQPM</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -86,7 +131,6 @@
         <option value="&lt;d075c999-25b2-4844-b558-2d61acc3fc89&gt;/bert-master/xq_output/checkpoint" />
         <option value="&lt;2739b2d8-4cc4-4229-8e9f-669acdd8522e&gt;/bert-master/pm_output_with_mention/checkpoint" />
         <option value="&lt;2739b2d8-4cc4-4229-8e9f-669acdd8522e&gt;/bert-master/run_classifier.py" />
-        <option value="$PROJECT_DIR$/run_classifier.py" />
         <option value="$PROJECT_DIR$/run_pm_with_mention.sh" />
         <option value="$PROJECT_DIR$/run_xq.sh" />
         <option value="$PROJECT_DIR$/run_mt.py" />
@@ -95,13 +139,15 @@
         <option value="$PROJECT_DIR$/ner/train_helper.py" />
         <option value="$PROJECT_DIR$/run_md.sh" />
         <option value="$PROJECT_DIR$/ner/models.py" />
-        <option value="$PROJECT_DIR$/data_utils.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/data_utils.py" />
+        <option value="$PROJECT_DIR$/run_classifier.py" />
+        <option value="$PROJECT_DIR$/run_xqpm.sh" />
         <option value="$PROJECT_DIR$/evaluate.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1280" />
     <option name="height" value="800" />
   </component>
@@ -118,6 +164,22 @@
             <path>
               <item name="BB-KBQA" type="b2602c69:ProjectViewProjectNode" />
               <item name="BB-KBQA" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BB-KBQA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BB-KBQA" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BB-KBQA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BB-KBQA" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="XQPM" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BB-KBQA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BB-KBQA" type="462c0819:PsiDirectoryNode" />
+              <item name="xqpm_output" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -238,22 +300,23 @@
       <workItem from="1558587711102" duration="4125000" />
       <workItem from="1558599744702" duration="35118000" />
       <workItem from="1559630513574" duration="9559000" />
-      <workItem from="1559801713254" duration="4714000" />
+      <workItem from="1559801713254" duration="8570000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92883000" />
+    <option name="totallyTimeSpent" value="96739000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27382874" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.1736672" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26957637" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2682927" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -268,36 +331,38 @@
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Remote Host" order="3" weight="0.23101777" />
+      <window_info anchor="right" id="Remote Host" order="3" weight="0.46930534" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="JSON Viewer" order="6" weight="0.32962668" />
       <window_info anchor="right" id="leetcode" order="7" side_tool="true" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.024232633" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1736672" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29139924" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2682927" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="File Transfer" order="9" weight="0.4460888" />
+      <window_info anchor="bottom" id="File Transfer" order="9" weight="0.8112965" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32991013" />
       <window_info anchor="bottom" id="Python Console" order="13" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Remote Host" order="3" weight="0.34168014" />
+      <window_info anchor="right" id="Remote Host" order="3" weight="0.46930534" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="JSON Viewer" order="6" weight="0.32962668" />
+      <window_info anchor="right" id="leetcode" order="7" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,19 +371,10 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bert$evaluate.coverage" NAME="evaluate Coverage Results" MODIFIED="1559640736569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/bert_master$evaluate.coverage" NAME="evaluate Coverage Results" MODIFIED="1558849112571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BB_KBQA$data_utils.coverage" NAME="data_utils Coverage Results" MODIFIED="1559807273433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BB_KBQA$evaluate.coverage" NAME="evaluate Coverage Results" MODIFIED="1559810787356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BB_KBQA$data_utils.coverage" NAME="data_utils Coverage Results" MODIFIED="1559886134287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BB_KBQA$evaluate.coverage" NAME="evaluate Coverage Results" MODIFIED="1560065877662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pm_output/test_results_9870_top1.tsv" />
-    <entry file="file://$PROJECT_DIR$/data/PM/candidate_predicate_bert_9870_top5.txt" />
-    <entry file="file://$PROJECT_DIR$/data/PM/infer9870_top3.csv" />
-    <entry file="file://$PROJECT_DIR$/data/PM/infer9870_top5.csv" />
-    <entry file="file://$PROJECT_DIR$/data/PM/infer_top3.csv" />
-    <entry file="file://$PROJECT_DIR$/result/pm_result_top3" />
-    <entry file="file://$PROJECT_DIR$/result/id_infer9870_all.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/result/pm_result_9870_all">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4007899" />
@@ -430,16 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="976">
-          <caret line="116" column="38" lean-forward="true" selection-start-line="116" selection-start-column="38" selection-end-line="116" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/PM/dev.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -492,16 +538,6 @@
         <state relative-caret-position="-659903" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_classifier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="302" column="25" lean-forward="true" selection-start-line="302" selection-start-column="25" selection-end-line="302" selection-end-column="25" />
-          <folding>
-            <element signature="e#646#684#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/XQ/test9870.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="-686750">
@@ -534,16 +570,6 @@
     <entry file="file://$PROJECT_DIR$/result/xq_result_9870_all">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3116">
-          <caret line="164" lean-forward="true" selection-start-line="164" selection-end-line="164" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -558,6 +584,74 @@
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="11880">
           <caret line="175121" selection-start-line="175121" selection-end-line="175121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/XQPM/test9870.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="-206133" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9624">
+          <caret line="825" column="70" selection-start-line="825" selection-start-column="70" selection-end-line="825" selection-end-column="70" />
+          <folding>
+            <element signature="e#646#684#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_xqpm.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/XQPM/test_data_9870_mc.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="188" selection-start-line="188" selection-end-line="188" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result/xqpm_result_9870">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="-7305" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xqpm_output/eval_results.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xqpm_output/test_results_3.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1707" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/XQPM/dev.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="454" column="68" selection-start-line="454" selection-start-column="68" selection-end-line="454" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -14,6 +14,10 @@ xq_dev = "data/XQ/candidate_entity_dev.txt"
 xq_test9870_mc= "data/XQ/candidate_entity_test_bert_9870_mc.txt"
 xq_infer9870 = "data/XQ/candidate_entity_test_bert_9870.txt"
 
+xqpm_train = "data/XQPM/train_entity_predicate.txt"
+xqpm_dev = "data/XQPM/dev_entity_predicate.txt"
+xqpm_test9870_mc = "data/XQPM/test_data_9870_mc.txt"
+
 
 def pm_process_train_dev(infile, outfile, with_mention=True):
     """
@@ -311,69 +315,148 @@ def xq_process_infer(infile, outfile):
                 continue
 
 
+def xqpm_process_train_dev_test(infile, outfile):
+    """
+    <question id=2-1>   | 《 犯 罪 学 》 | 的 isbn 码 是 什 么
+    <answer id=2-1>	9787300088082
+    <triple id=2-1> 《 犯 罪 学 》 ( 曹 立 群 与 任 昕 主 编 )   isbn    9787300088082
+    <candidate id=2-1>  《 犯 罪 学 》 ( 曹 立 群 与 任 昕 主 编 )	页 数	《 犯 罪 学 》 ( 曹 立 群 与 任 昕 主 编 )	价 格	《 犯 罪 学 》 ( 许 章 润 主 编 )	中 文 名
+
+    :param infile: raw file
+    :param outfile: csv file for train/dev/test
+    """
+    p = "id=(.*?)>"  # id pattern
+    fw = open(outfile, "w")
+    with open(infile) as f:
+        i = 0
+        new_line = ""
+        output_line = ""
+        relation = ""
+        for line in f:
+            i += 1
+            if i % 5 == 1:
+                # line: <question id=2-1>   | 《 犯 罪 学 》 | 的 isbn 码 是 什 么
+                line = line.strip().lower().split("\t")
+                res = re.search(p, line[0])
+                idx = res.group(1)
+                question = line[1]
+                question = "".join(question.split("|")).strip()
+                question = re.sub(r"\s+", r" ", question)
+                new_line += str(question) + "\t"
+                # new_line: 《 犯 罪 学 》 的 isbn 码 是 什 么\t
+            elif i % 5 == 2:
+                pass
+            elif i % 5 == 3:
+                # line: <triple id=2-1> 《 犯 罪 学 》 ( 曹 立 群 与 任 昕 主 编 )   isbn    9787300088082
+                line = line.strip().lower().split("\t")
+                try:
+                    entity, predicate = line[1], line[2]
+                    output_line = str(idx) + '\t' + new_line + str(entity) + " " + str(predicate) + "\t" + "1" + "\n"
+                except IndexError:
+                    print("%s: There is no golden entity in question." % idx)
+                    output_line = ""
+                # output_line = 2-1\t《 犯 罪 学 》 的 isbn 码 是 什 么\t《 犯 罪 学 》 ( 曹 立 群 与 任 昕 主 编 )\t1\n
+                fw.write(output_line)
+            elif i % 5 == 4:
+                # line: <candidate id=2-1>  《 犯 罪 学 》 ( 许 章 润 主 编 ) 《 犯 罪 学 》 ( 康 树 华 与 张 小 虎 主 编 ) 《 犯 罪 学 》 ( 道 尔 戈 娃 主 编 )
+                line = line.strip().lower().split("\t")
+                outputs = []
+                for ce, cp in zip(line[1::2], line[2::2]):
+                    if ce != entity and cp != predicate:
+                        outputs.append(str(idx) + '\t' + new_line + str(ce) + " " + str(cp) + "\t" + "0" + "\n")
+                    else:
+                        print("%s: Golden 'entity-predicate' pair appears in candidates." % idx)
+                # outputs:
+                #   2-1\t《 犯 罪 学 》 的 isbn 码 是 什 么\t《 犯 罪 学 》 ( 许 章 润 主 编 )\t0\n
+                #   2-1\t《 犯 罪 学 》 的 isbn 码 是 什 么\t《 犯 罪 学 》 ( 康 树 华 与 张 小 虎 主 编 )\t0\n
+                #   2-1\t《 犯 罪 学 》 的 isbn 码 是 什 么\t《 犯 罪 学 》 ( 道 尔 戈 娃 主 编 )\t0\n
+                fw.writelines(outputs)
+            else:
+                new_line = ""
+                output_line = ""
+                continue
+
+
 if __name__ == "__main__":
-    # pm data
-    pm_process_train_dev(pm_train, "data/PM/train.csv", with_mention=False)
-    train_df = pd.read_csv("data/PM/train.csv", header=None, sep="\t", quoting=3)
-    print(train_df.head(100))
-    train_df.to_csv("data/PM/train.csv", header=False, index=False, sep="\t")
-
-    pm_process_train_dev(pm_dev, "data/PM/dev.csv", with_mention=False)
-    dev_df = pd.read_csv("data/PM/dev.csv", header=None, sep="\t", quoting=3)
-    print(dev_df.head(100))
-    dev_df.to_csv("data/PM/dev.csv", header=False, index=False, sep="\t")
-
-    pm_process_test(pm_test9870_ec, "data/PM/test9870.csv", with_mention=False)
-    test_df = pd.read_csv("data/PM/test9870.csv", header=None, sep="\t", quoting=3)
-    print(test_df.head(100))
-    test_df.to_csv("data/PM/test9870.csv", header=False, index=False, sep="\t")
-
-    pm_process_infer(pm_infer9870_all, "data/PM/infer9870_all.csv", with_mention=False)
-    infer_df = pd.read_csv("data/PM/infer9870_all.csv", header=None, sep="\t", quoting=3)
-    print(infer_df.head(100))
-    infer_df.to_csv("data/PM/infer9870_all.csv", header=False, index=False, sep="\t")
-
-    # pm data with mention
-    pm_process_train_dev(pm_train, "data/PM/train_with_mention.csv", with_mention=True)
-    train_df = pd.read_csv("data/PM/train_with_mention.csv", header=None, sep="\t", quoting=3)
-    print(train_df.head(100))
-    train_df.to_csv("data/PM/train_with_mention.csv", header=False, index=False, sep="\t")
-
-    pm_process_train_dev(pm_dev, "data/PM/dev_with_mention.csv", with_mention=True)
-    dev_df = pd.read_csv("data/PM/dev_with_mention.csv", header=None, sep="\t", quoting=3)
-    print(dev_df.head(100))
-    dev_df.to_csv("data/PM/dev_with_mention.csv", header=False, index=False, sep="\t")
-
-    pm_process_test(pm_test9870_ec, "data/PM/test9870_with_mention.csv", with_mention=True)
-    test_df = pd.read_csv("data/PM/test9870_with_mention.csv", header=None, sep="\t", quoting=3)
-    print(test_df.head(100))
-    test_df.to_csv("data/PM/test9870_with_mention.csv", header=False, index=False, sep="\t")
-
-    pm_process_infer(pm_infer9870_all, "data/PM/infer9870_all_with_mention.csv", with_mention=True)
-    infer_df = pd.read_csv("data/PM/infer9870_all_with_mention.csv", header=None, sep="\t", quoting=3)
-    print(infer_df.head(100))
-    infer_df.to_csv("data/PM/infer9870_all_with_mention.csv", header=False, index=False, sep="\t")
-
-    # xq data
-    xq_process_train_dev_test(xq_train, "data/XQ/train.csv")
-    train_df = pd.read_csv("data/XQ/train.csv", header=None, sep="\t", quoting=3)
+    # # pm data
+    # pm_process_train_dev(pm_train, "data/PM/train.csv", with_mention=False)
+    # train_df = pd.read_csv("data/PM/train.csv", header=None, sep="\t", quoting=3)
+    # print(train_df.head(100))
+    # train_df.to_csv("data/PM/train.csv", header=False, index=False, sep="\t")
+    # 
+    # pm_process_train_dev(pm_dev, "data/PM/dev.csv", with_mention=False)
+    # dev_df = pd.read_csv("data/PM/dev.csv", header=None, sep="\t", quoting=3)
+    # print(dev_df.head(100))
+    # dev_df.to_csv("data/PM/dev.csv", header=False, index=False, sep="\t")
+    # 
+    # pm_process_test(pm_test9870_ec, "data/PM/test9870.csv", with_mention=False)
+    # test_df = pd.read_csv("data/PM/test9870.csv", header=None, sep="\t", quoting=3)
+    # print(test_df.head(100))
+    # test_df.to_csv("data/PM/test9870.csv", header=False, index=False, sep="\t")
+    # 
+    # pm_process_infer(pm_infer9870_all, "data/PM/infer9870_all.csv", with_mention=False)
+    # infer_df = pd.read_csv("data/PM/infer9870_all.csv", header=None, sep="\t", quoting=3)
+    # print(infer_df.head(100))
+    # infer_df.to_csv("data/PM/infer9870_all.csv", header=False, index=False, sep="\t")
+    # 
+    # # pm data with mention
+    # pm_process_train_dev(pm_train, "data/PM/train_with_mention.csv", with_mention=True)
+    # train_df = pd.read_csv("data/PM/train_with_mention.csv", header=None, sep="\t", quoting=3)
+    # print(train_df.head(100))
+    # train_df.to_csv("data/PM/train_with_mention.csv", header=False, index=False, sep="\t")
+    # 
+    # pm_process_train_dev(pm_dev, "data/PM/dev_with_mention.csv", with_mention=True)
+    # dev_df = pd.read_csv("data/PM/dev_with_mention.csv", header=None, sep="\t", quoting=3)
+    # print(dev_df.head(100))
+    # dev_df.to_csv("data/PM/dev_with_mention.csv", header=False, index=False, sep="\t")
+    # 
+    # pm_process_test(pm_test9870_ec, "data/PM/test9870_with_mention.csv", with_mention=True)
+    # test_df = pd.read_csv("data/PM/test9870_with_mention.csv", header=None, sep="\t", quoting=3)
+    # print(test_df.head(100))
+    # test_df.to_csv("data/PM/test9870_with_mention.csv", header=False, index=False, sep="\t")
+    # 
+    # pm_process_infer(pm_infer9870_all, "data/PM/infer9870_all_with_mention.csv", with_mention=True)
+    # infer_df = pd.read_csv("data/PM/infer9870_all_with_mention.csv", header=None, sep="\t", quoting=3)
+    # print(infer_df.head(100))
+    # infer_df.to_csv("data/PM/infer9870_all_with_mention.csv", header=False, index=False, sep="\t")
+    # 
+    # # xq data
+    # xq_process_train_dev_test(xq_train, "data/XQ/train.csv")
+    # train_df = pd.read_csv("data/XQ/train.csv", header=None, sep="\t", quoting=3)
+    # print(train_df.head(100))
+    # train_df.columns = ["id", "sep1", "sep2", "label"]
+    # train_df.to_csv("data/XQ/train.csv", header=False, index=False, sep="\t")
+    # 
+    # xq_process_train_dev_test(xq_dev, "data/XQ/dev.csv")
+    # dev_df = pd.read_csv("data/XQ/dev.csv", header=None, sep="\t", quoting=3)
+    # print(dev_df.head(100))
+    # dev_df.to_csv("data/XQ/dev.csv", header=False, index=False, sep="\t")
+    # 
+    # xq_process_train_dev_test(xq_test9870_mc, "data/XQ/test9870.csv")
+    # test_df = pd.read_csv("data/XQ/test9870.csv", header=None, sep="\t", quoting=3)
+    # print(test_df.head(100))
+    # test_df.to_csv("data/XQ/test9870.csv", header=False, index=False, sep="\t")
+    # 
+    # xq_process_infer(xq_infer9870, "data/XQ/infer9870.csv")
+    # infer_df = pd.read_csv("data/XQ/infer9870.csv", header=None, sep="\t", quoting=3)
+    # print(infer_df.head(100))
+    # infer_df.to_csv("data/XQ/infer9870.csv", header=False, index=False, sep="\t")
+    
+    # xqpm data
+    xqpm_process_train_dev_test(xqpm_train, "data/XQPM/train.csv")
+    train_df = pd.read_csv("data/XQPM/train.csv", header=None, sep="\t", quoting=3)
     print(train_df.head(100))
     train_df.columns = ["id", "sep1", "sep2", "label"]
-    train_df.to_csv("data/XQ/train.csv", header=False, index=False, sep="\t")
+    train_df.to_csv("data/XQPM/train.csv", header=False, index=False, sep="\t")
 
-    xq_process_train_dev_test(xq_dev, "data/XQ/dev.csv")
-    dev_df = pd.read_csv("data/XQ/dev.csv", header=None, sep="\t", quoting=3)
+    xqpm_process_train_dev_test(xqpm_dev, "data/XQPM/dev.csv")
+    dev_df = pd.read_csv("data/XQPM/dev.csv", header=None, sep="\t", quoting=3)
     print(dev_df.head(100))
-    dev_df.to_csv("data/XQ/dev.csv", header=False, index=False, sep="\t")
+    dev_df.to_csv("data/XQPM/dev.csv", header=False, index=False, sep="\t")
 
-    xq_process_train_dev_test(xq_test9870_mc, "data/XQ/test9870.csv")
-    test_df = pd.read_csv("data/XQ/test9870.csv", header=None, sep="\t", quoting=3)
+    xqpm_process_train_dev_test(xqpm_test9870_mc, "data/XQPM/test9870.csv")
+    test_df = pd.read_csv("data/XQPM/test9870.csv", header=None, sep="\t", quoting=3)
     print(test_df.head(100))
-    test_df.to_csv("data/XQ/test9870.csv", header=False, index=False, sep="\t")
-
-    xq_process_infer(xq_infer9870, "data/XQ/infer9870.csv")
-    infer_df = pd.read_csv("data/XQ/infer9870.csv", header=None, sep="\t", quoting=3)
-    print(infer_df.head(100))
-    infer_df.to_csv("data/XQ/infer9870.csv", header=False, index=False, sep="\t")
+    test_df.to_csv("data/XQPM/test9870.csv", header=False, index=False, sep="\t")
 
     print("Done!")

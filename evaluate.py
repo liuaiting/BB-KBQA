@@ -22,6 +22,8 @@ pm_with_mention_result_file = "pm_output_with_mention/test_results_9870_ec_with_
 pm_with_mention_raw_file_all = "data/PM/test9870_all_with_mention.csv"
 pm_with_mention_result_file_all = "pm_output_with_mention/test_results_9870_all_with_mention.tsv"
 
+xqpm_raw_file = "data/XQPM/test9870.csv"
+xqpm_result_file = "xqpm_output/test_results.tsv"
 
 def func(a, b):
     if a >= b:
@@ -181,3 +183,6 @@ def column5_to_row(id_pred_file, raw_file, result_file):
 #
 # process_infer_result("pm_output_with_mention/test_results_9870_all_with_mention.tsv", "data/PM/infer9870_all_with_mention.csv", "result/id_infer9870_all_with_mention.csv")
 # column5_to_row("result/id_infer9870_all_with_mention.csv", "data/PM/candidate_predicate_bert_9870_all.txt", "result/pm_result_9870_all_with_mention")
+
+process_infer_result("xqpm_output/test_results.tsv", "data/XQPM/test9870.csv", "result/id_test9870.csv")
+column5_to_row("result/id_test9870.csv", "data/XQPM/test_data_9870_mc.txt", "result/xqpm_result_9870")
